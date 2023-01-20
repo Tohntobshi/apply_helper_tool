@@ -1,6 +1,4 @@
-let roleName = ''
-let companyName = ''
-let personName = ''
+
 
 function setCoverLetter(letter) {
     const input = document.getElementById('form-input--userNote')
@@ -10,14 +8,18 @@ function setCoverLetter(letter) {
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        const { letter } = request
-        setCoverLetter(letter)
+        if (!request?.letter) return
+        setCoverLetter(request.letter)
     }
 );
 
-async function doStuff() {
+async function grabData() {
     if (document.visibilityState === "hidden")
         return
+    let roleName = ''
+    let companyName = ''
+    let personName = ''
+
     const roleElement = document.querySelector('h4.styles-module_component__3ZI84.text-lg.font-medium.text-dark-aaaa')
     if (roleElement && roleElement.innerText)
         roleName = roleElement.innerText || ''
@@ -37,4 +39,9 @@ async function doStuff() {
     } catch(e) {}
 }
 
-setInterval(doStuff, 500)
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (!request?.grabData) return
+        grabData()
+    }
+)
