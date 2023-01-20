@@ -1,17 +1,8 @@
-
-
 function setCoverLetter(letter) {
     const input = document.getElementById('form-input--userNote')
     if (input && !input.value)
         input.value = letter
 }
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (!request?.letter) return
-        setCoverLetter(request.letter)
-    }
-);
 
 async function grabData() {
     if (document.visibilityState === "hidden")
@@ -32,16 +23,20 @@ async function grabData() {
     if (personElement && personElement.innerText)
         personName = personElement.innerText || ''
 
-    const letter = getCoverLetter(personName, roleName, companyName)
-
     try {
-        await chrome.runtime.sendMessage({letter})
+        await chrome.runtime.sendMessage({data: {personName, roleName, companyName}})
     } catch(e) {}
 }
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (!request?.grabData) return
-        grabData()
+        if (request?.letter) {
+            setCoverLetter(request.letter)
+            return
+        }
+        if (request?.grabData) {
+            grabData()
+            return
+        }
     }
 )

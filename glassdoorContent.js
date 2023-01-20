@@ -1,9 +1,6 @@
-
-
 async function grabData() {
     if (document.visibilityState === "hidden")
         return
-
     let roleName = ''
     let companyName = ''
     let personName = ''
@@ -16,16 +13,16 @@ async function grabData() {
     if (companyElement)
         companyName = companyElement.childNodes[0]?.data || ''
 
-    const letter = getCoverLetter(personName, roleName, companyName)
-
     try {
-        await chrome.runtime.sendMessage({letter})
+        await chrome.runtime.sendMessage({data: {personName, roleName, companyName}})
     } catch(e) {}
 }
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (!request?.grabData) return
-        grabData()
+        if (request?.grabData) {
+            grabData()
+            return
+        }
     }
 )

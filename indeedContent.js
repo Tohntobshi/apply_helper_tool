@@ -8,7 +8,9 @@ function setCoverLetter(letter) {
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (!request?.letter) return
-        setCoverLetter(request.letter)
+        if (request?.letter) {
+            setCoverLetter(request.letter)
+            return
+        }
     }
 );

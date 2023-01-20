@@ -16,19 +16,19 @@
     },
     "content_scripts": [
         {
-            "js": ["coverLetter.js", "angelContent.js"],
+            "js": ["angelContent.js"],
             "matches": [
-                "https://angel.co/*"
+                "https://angel.co/jobs?job_listing_id=*"
             ]
         },
         {
-            "js": ["coverLetter.js", "linkedinContent.js"],
+            "js": ["linkedinContent.js"],
             "matches": [
                 "https://www.linkedin.com/jobs/*"
             ]
         },
         {
-            "js": ["coverLetter.js", "glassdoorContent.js"],
+            "js": ["glassdoorContent.js"],
             "matches": [
                 "https://www.glassdoor.com/Job/*"
             ]

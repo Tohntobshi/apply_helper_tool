@@ -1,16 +1,23 @@
+import { getCoverLetter } from './coverLetter.js'
+
 let letter = ''
+
+function onData({personName, roleName, companyName}) {
+    letter = getCoverLetter(personName, roleName, companyName)
+    const div = document.querySelector("#coverLetter")
+    div.innerHTML = ''
+    const letterArr = letter.split('\n')
+    for (const par of letterArr) {
+        let child = document.createElement('p')
+        child.innerHTML = par
+        div.appendChild(child)
+    }
+}
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        if (!request?.letter) return
-        let div = document.querySelector("#coverLetter")
-        div.innerHTML = ''
-        letter = request.letter
-        let letterArr = letter.split('\n')
-        for (let par of letterArr) {
-            let child = document.createElement('p')
-            child.innerHTML = par
-            div.appendChild(child)
+        if (request?.data) {
+            onData(request.data)
         }
     }
 )

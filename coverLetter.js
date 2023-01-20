@@ -1,4 +1,4 @@
-function getCoverLetter(name, role, company) {
+export function getCoverLetter(name, role, company) {
     if (company.endsWith('.'))
         company = company.slice(0, company.length - 1)
     return (name ? `Dear ${name},\n` : 'Hello,\n') +

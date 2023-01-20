@@ -9,7 +9,7 @@ turn on developer mode
 
 click "Load unpacked" and choose root directory of the project
 
-click extesion icon when the jop page is open on linkedin, glassdoor or angel.co
+click extension icon when the jop page is open on linkedin, glassdoor or angel.co
 
 ## How to modify
 
