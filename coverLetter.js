@@ -1,3 +1,7 @@
+export const PHONE = ''
+export const NAME = 'Anton'
+export const LINKEDIN = 'https://www.linkedin.com/in/tohntobshi/'
+export const GITHUB = 'https://github.com/Tohntobshi'
 export function getCoverLetter(name, role, company) {
     if (company.endsWith('.'))
         company = company.slice(0, company.length - 1)
@@ -9,6 +13,6 @@ Also I have great problem-solving and team collaboration skills. \
 And I am excited to bring my skills and experience to ${company} and contribute to the development of high-quality applications. \
 Thank you for considering my application.
 Sincerely,
-Anton
+${NAME}
 P. S. If you have other positions which may be more suitable for my skillset, I will also consider them.`
 }
