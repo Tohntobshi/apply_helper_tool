@@ -5,11 +5,11 @@ async function grabData() {
     let companyName = ''
     let personName = ''
 
-    const roleElement = document.querySelector('div[data-test="jobTitle"]')
+    const roleElement = document.querySelector('div[data-test="jobTitle"]') || document.querySelector('div[data-test="job-title"]')
     if (roleElement && roleElement.innerText)
         roleName = roleElement.innerText || ''
 
-    const companyElement = document.querySelector('div[data-test="employerName"]')
+    const companyElement = document.querySelector('div[data-test="employerName"]') || document.querySelector('div[data-test="employer-name"]')
     if (companyElement)
         companyName = companyElement.childNodes[0]?.data || ''
 

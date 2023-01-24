@@ -30,7 +30,8 @@
         {
             "js": ["glassdoorContent.js"],
             "matches": [
-                "https://www.glassdoor.com/Job/*"
+                "https://www.glassdoor.com/Job/*",
+                "https://www.glassdoor.com/job-listing/*"
             ]
         },
         {
