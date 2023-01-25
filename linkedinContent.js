@@ -10,6 +10,7 @@ async function grabData() {
     let roleName = ''
     let companyName = ''
     let personName = ''
+    let jobDescription = ''
 
     const roleElement = document.querySelector('h2.t-24.t-bold.jobs-unified-top-card__job-title')
     if (roleElement && roleElement.innerText)
@@ -23,8 +24,12 @@ async function grabData() {
     if (personElement && personElement.innerText)
         personName = personElement.innerText.trim() || ''
 
+    const descriptionElement = document.querySelector('article.jobs-description__container')
+    if (descriptionElement && descriptionElement.innerText)
+        jobDescription = descriptionElement.innerText || ''
+
     try {
-        await chrome.runtime.sendMessage({data: {personName, roleName, companyName}})
+        await chrome.runtime.sendMessage({data: {personName, roleName, companyName, jobDescription}})
     } catch(e) {}
 }
 

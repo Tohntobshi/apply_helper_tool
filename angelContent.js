@@ -10,6 +10,7 @@ async function grabData() {
     let roleName = ''
     let companyName = ''
     let personName = ''
+    let jobDescription = ''
 
     const roleElement = document.querySelector('h4.styles-module_component__3ZI84.text-lg.font-medium.text-dark-aaaa')
     if (roleElement && roleElement.innerText)
@@ -23,8 +24,12 @@ async function grabData() {
     if (personElement && personElement.innerText)
         personName = personElement.innerText || ''
 
+    const descriptionElement = document.querySelector('div.styles_description__bGSzH')
+    if (descriptionElement && descriptionElement.innerText)
+        jobDescription = descriptionElement.innerText || ''
+
     try {
-        await chrome.runtime.sendMessage({data: {personName, roleName, companyName}})
+        await chrome.runtime.sendMessage({data: {personName, roleName, companyName, jobDescription}})
     } catch(e) {}
 }
 

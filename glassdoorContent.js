@@ -4,6 +4,7 @@ async function grabData() {
     let roleName = ''
     let companyName = ''
     let personName = ''
+    let jobDescription = ''
 
     const roleElement = document.querySelector('div[data-test="jobTitle"]') || document.querySelector('div[data-test="job-title"]')
     if (roleElement && roleElement.innerText)
@@ -13,8 +14,12 @@ async function grabData() {
     if (companyElement)
         companyName = companyElement.childNodes[0]?.data || ''
 
+    const descriptionElement = document.querySelector('div.jobDescriptionContent')
+    if (descriptionElement && descriptionElement.innerText)
+        jobDescription = descriptionElement.innerText || ''
+
     try {
-        await chrome.runtime.sendMessage({data: {personName, roleName, companyName}})
+        await chrome.runtime.sendMessage({data: {personName, roleName, companyName, jobDescription}})
     } catch(e) {}
 }
 

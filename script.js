@@ -1,8 +1,18 @@
-import { getCoverLetter, PHONE, LINKEDIN, GITHUB  } from './coverLetter.js'
+import { getCoverLetter, PHONE, LINKEDIN, GITHUB, NAME } from './coverLetter.js'
 
+
+
+let person = ''
+let role = ''
+let company = ''
+let description = ''
 let letter = ''
 
-function onData({personName, roleName, companyName}) {
+function onData({personName, roleName, companyName, jobDescription}) {
+    person = personName
+    role = roleName
+    company = companyName
+    description = jobDescription
     letter = getCoverLetter(personName, roleName, companyName)
     const div = document.querySelector("#coverLetter")
     const btns = document.querySelector("#cp-buttons")
@@ -31,6 +41,16 @@ document.getElementById("copy").addEventListener("click", () => {
 document.getElementById("insert").addEventListener("click", async () => {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true})
     chrome.tabs.sendMessage(tab.id, {letter})
+})
+
+document.getElementById("ask-gpt").addEventListener("click", async () => {
+    const openedTab = await chrome.tabs.create({ url: 'https://chat.openai.com/chat', active: false })
+    chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+        if (openedTab.id === tabId && changeInfo.status === 'complete') {
+            chrome.tabs.sendMessage(tab.id, {askGPTData: {person, role, company, description, myName: NAME}})
+            chrome.tabs.update(tab.id, { active: true })
+        }
+    })
 })
 
 async function sendRequest() {

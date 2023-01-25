@@ -40,6 +40,12 @@
                 "https://apply.indeed.com/indeedapply/*"
             ],
             "all_frames": true
+        },
+        {
+            "js": ["chatGPTContent.js"],
+            "matches": [
+                "https://chat.openai.com/chat"
+            ]
         }
       ]
 }
