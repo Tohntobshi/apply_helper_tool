@@ -7,6 +7,8 @@ function setCoverLetter(letter) {
 async function grabData() {
     if (document.visibilityState === "hidden")
         return
+    if (!window.location.href.startsWith('https://www.linkedin.com/jobs/'))
+        return
     let roleName = ''
     let companyName = ''
     let personName = ''

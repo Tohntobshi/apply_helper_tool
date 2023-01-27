@@ -1,6 +1,8 @@
 async function grabData() {
     if (document.visibilityState === "hidden")
         return
+    if (!window.location.href.startsWith('https://www.glassdoor.com/Job/') && !window.location.href.startsWith('https://www.glassdoor.com/job-listing/'))
+        return
     let roleName = ''
     let companyName = ''
     let personName = ''

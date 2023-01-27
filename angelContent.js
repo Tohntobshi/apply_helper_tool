@@ -5,7 +5,7 @@ function setCoverLetter(letter) {
 }
 
 async function grabData() {
-    if (document.visibilityState === "hidden")
+    if (document.visibilityState === "hidden" || !window.location.href.startsWith('https://angel.co/jobs?job_listing_id='))
         return
     let roleName = ''
     let companyName = ''

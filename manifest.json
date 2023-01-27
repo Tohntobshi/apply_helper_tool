@@ -18,20 +18,19 @@
         {
             "js": ["angelContent.js"],
             "matches": [
-                "https://angel.co/jobs?job_listing_id=*"
+                "https://angel.co/*"
             ]
         },
         {
             "js": ["linkedinContent.js"],
             "matches": [
-                "https://www.linkedin.com/jobs/*"
+                "https://www.linkedin.com/*"
             ]
         },
         {
             "js": ["glassdoorContent.js"],
             "matches": [
-                "https://www.glassdoor.com/Job/*",
-                "https://www.glassdoor.com/job-listing/*"
+                "https://www.glassdoor.com/*"
             ]
         },
         {
@@ -44,7 +43,7 @@
         {
             "js": ["chatGPTContent.js"],
             "matches": [
-                "https://chat.openai.com/chat"
+                "https://chat.openai.com/*"
             ]
         }
       ]
