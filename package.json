@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "chrome-types": "^0.1.163"
+    "chrome-types": "^0.1.163",
+    "esbuild": "^0.17.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "build": "esbuild app.jsx --bundle --outfile=bundle.js"
   }
 }

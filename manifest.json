@@ -18,7 +18,7 @@
         {
             "js": ["angelContent.js"],
             "matches": [
-                "https://angel.co/*"
+                "https://wellfound.com/*"
             ]
         },
         {
