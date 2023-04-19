@@ -1,26 +1,22 @@
 async function grabData() {
     if (document.visibilityState === "hidden")
         return
-    if (!window.location.href.startsWith('https://www.linkedin.com/jobs/'))
+    if (!window.location.href.startsWith('https://hh.ru/vacancy/'))
         return
     let roleName = ''
     let companyName = ''
     let personName = ''
     let jobDescription = ''
 
-    const roleElement = document.querySelector('.jobs-unified-top-card__job-title')
+    const roleElement = document.querySelector('h1[data-qa="vacancy-title"]')
     if (roleElement && roleElement.innerText)
         roleName = roleElement.innerText || ''
 
-    const companyElement = document.querySelector('span.jobs-unified-top-card__company-name a')
-    if (companyElement && companyElement.innerText)
+    const companyElement = document.querySelector('a[data-qa="vacancy-company-name"]')
+    if (companyElement)
         companyName = companyElement.innerText || ''
 
-    const personElement = document.querySelector('.jobs-poster__name')
-    if (personElement && personElement.innerText)
-        personName = personElement.innerText.trim() || ''
-
-    const descriptionElement = document.querySelector('article.jobs-description__container')
+    const descriptionElement = document.querySelector('div[data-qa="vacancy-description"]')
     if (descriptionElement && descriptionElement.innerText)
         jobDescription = descriptionElement.innerText || ''
 

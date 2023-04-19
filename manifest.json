@@ -34,16 +34,21 @@
             ]
         },
         {
-            "js": ["indeedContent.js"],
+            "js": ["hhContent.js"],
             "matches": [
-                "https://apply.indeed.com/indeedapply/*"
-            ],
-            "all_frames": true
+                "https://hh.ru/*"
+            ]
         },
         {
-            "js": ["chatGPTContent.js"],
+            "js": ["habrContent.js"],
             "matches": [
-                "https://chat.openai.com/*"
+                "https://career.habr.com/*"
+            ]
+        },
+        {
+            "js": ["workatstartupContent.js"],
+            "matches": [
+                "https://www.workatastartup.com/*"
             ]
         }
       ]

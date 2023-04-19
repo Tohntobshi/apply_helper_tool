@@ -1,26 +1,22 @@
 async function grabData() {
     if (document.visibilityState === "hidden")
         return
-    if (!window.location.href.startsWith('https://www.linkedin.com/jobs/'))
+    if (!window.location.href.startsWith('https://career.habr.com/vacancies/'))
         return
     let roleName = ''
     let companyName = ''
     let personName = ''
     let jobDescription = ''
 
-    const roleElement = document.querySelector('.jobs-unified-top-card__job-title')
+    const roleElement = document.querySelector('h1.page-title__title')
     if (roleElement && roleElement.innerText)
         roleName = roleElement.innerText || ''
 
-    const companyElement = document.querySelector('span.jobs-unified-top-card__company-name a')
-    if (companyElement && companyElement.innerText)
+    const companyElement = document.querySelector('div.company_name')
+    if (companyElement)
         companyName = companyElement.innerText || ''
 
-    const personElement = document.querySelector('.jobs-poster__name')
-    if (personElement && personElement.innerText)
-        personName = personElement.innerText.trim() || ''
-
-    const descriptionElement = document.querySelector('article.jobs-description__container')
+    const descriptionElement = document.querySelector('div.vacancy-description__text')
     if (descriptionElement && descriptionElement.innerText)
         jobDescription = descriptionElement.innerText || ''
 

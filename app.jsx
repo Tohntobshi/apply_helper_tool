@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
+function capitalize(str) {
+    return str
+        .trim()
+        .split(' ')
+        .map(el => el[0].toLocaleUpperCase() + el.slice(1))
+        .join(' ')
+}
+
 function App() {
     const [person, setPerson] = useState('')
     const [role, setRole] = useState('')
@@ -11,7 +19,7 @@ function App() {
     const [templates, setTemplates] = useState([])
     const [editedTemplate, setEditedTemplate] = useState(-1)
     const onData = ({personName, roleName, companyName, jobDescription}) => {
-        setPerson(personName)
+        setPerson(capitalize(personName))
         setRole(roleName)
         setCompany(companyName)
         setDescription(jobDescription)
@@ -72,21 +80,10 @@ function App() {
         if (company) text = text.replace('[company]', company)
         if (role) text = text.replace('[role]', role)
         if (myName) text = text.replace('[my_name]', myName)
-        if (description) text = text.replace('[decription]', description)
+        if (description) text = text.replace('[description]', description)
         return text
     })
     return <div>
-        <div className='row'>
-            {isNameEdited
-                ? <div>
-                    <textarea className='textinput' value={myName} onChange={e => setMyName(e.target.value)}/>
-                    <button onClick={finishEditName}>save</button>
-                </div>
-                : <div>
-                    <p>Name: {myName}</p>
-                    <button onClick={editName}>edit</button>
-                </div>}
-        </div>
         {templates.map((el, index) => {
             const isEdited = index === editedTemplate
             const text = templatesToRender[index]
@@ -108,9 +105,20 @@ function App() {
             </div>
         })}
         <div className='row'>
+            <p>Add new template using placeholders [person], [company], [role], [my_name], [description]</p>
             <button onClick={addTemplate}>add</button>
         </div>
-        
+        <div className='row'>
+            {isNameEdited
+                ? <div>
+                    <textarea rows={1} className='textinput' value={myName} onChange={e => setMyName(e.target.value)}/>
+                    <button onClick={finishEditName}>save</button>
+                </div>
+                : <div>
+                    <p>Name: {myName}</p>
+                    <button onClick={editName}>edit</button>
+                </div>}
+        </div>
     </div>
 }
 
