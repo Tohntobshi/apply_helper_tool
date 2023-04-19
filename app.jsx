@@ -5,6 +5,7 @@ function capitalize(str) {
     return str
         .trim()
         .split(' ')
+        .filter(el => el)
         .map(el => el[0].toLocaleUpperCase() + el.slice(1))
         .join(' ')
 }
