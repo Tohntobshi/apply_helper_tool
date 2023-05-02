@@ -43,8 +43,10 @@ function App() {
             if (res.myName) setMyName(res.myName)
         })();
     }, [])
-    const copy = (text) => () => {
-        navigator.clipboard.writeText(text)
+    const copy = (text) => async () => {
+        await navigator.clipboard.writeText(text)
+	await new Promise(res => setTimeout(res, 100))
+        window.close()
     }
 
     const addTemplate = () => {

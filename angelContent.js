@@ -12,15 +12,15 @@ async function grabData() {
     let personName = ''
     let jobDescription = ''
 
-    const roleElement = document.querySelector('h4.styles-module_component__3ZI84.text-lg.font-medium.text-dark-aaaa')
+    const roleElement = document.querySelector('div.flex.flex-wrap.justify-center.text-lg > span.text-center')
     if (roleElement && roleElement.innerText)
         roleName = roleElement.innerText || ''
 
-    const companyElement = document.querySelector('.styles_detail__moBEM.styles_name__YTfJL dd')
+    const companyElement = document.querySelector('div.flex-wrap.py-4.text-center.text-black > div.text-lg')
     if (companyElement && companyElement.innerText)
         companyName = companyElement.innerText || ''
 
-    const personElement = document.querySelector('div.styles_component__ETEwm.styles_details__7QRS4 div.styles_header__LhnxP h4.styles-module_component__3ZI84.styles_name__oO6gd.text-lg.font-medium a')
+    const personElement = document.querySelector('h4.styles-module_component__3ZI84.styles_name__oO6gd.text-lg.font-medium > a')
     if (personElement && personElement.innerText)
         personName = personElement.innerText || ''
 
